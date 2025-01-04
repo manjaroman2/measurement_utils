@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from pprint import pformat as pprint_pformat
 import re as regex
 import time
 import traceback
 from contextlib import contextmanager
 from pathlib import Path
+from pprint import pformat as pprint_pformat
 
 import numba as nb
 import numpy as np
@@ -120,11 +120,11 @@ class Measureables(dict[tuple[Symbol, str], np.float64]):
             if k[0] == symbol_key:
                 return k[1]
         return None
-    
+
     def itersymbols(self):
         for k, v in self.items():
             yield (k[0], v)
-            
+
     def iterstrings(self):
         for k, v in self.items():
             yield (k[1], v)
@@ -150,7 +150,7 @@ class Measureables(dict[tuple[Symbol, str], np.float64]):
             print(f"Key '{key}' not found, returning None")
             return None
         return super().__getitem__(key)
-    
+
     def __repr__(self):
         return pprint_pformat(dict(self.iterstrings()))
 
