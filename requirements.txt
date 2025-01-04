@@ -1,1 +1,4 @@
-sympy
+numba>=0.60.0
+sympy>=1.13.3
+typeguard>=4.4.1
+numpy>=2.0.2
