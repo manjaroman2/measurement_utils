@@ -99,7 +99,6 @@ def wrap_kwarg(kwarg: str, wrapper_func):
 class Measureables(dict[tuple[Symbol, str], np.float64]):
     @classmethod
     def cast(cls, any_dict: dict) -> Measureables:
-        print("casting")
         if type(any_dict) == Measureables:
             return any_dict
         elif all(type(k) == Symbol and type(v) == float or type(v) == int for k, v in any_dict.items()):
@@ -306,7 +305,7 @@ def generate_measureables_tui() -> dict[tuple[Symbol, str], np.float64]:
                 continue
             measurables_strings[measurable_name] = measurable_error
 
-    measureables = {}
+    measureables = Measureables()
     for measurable_name, measurable_error in measurables_strings.items():
         measurable_symbol = Symbol(measurable_name)
         measureables[(measurable_symbol, measurable_name)] = measurable_error
@@ -410,6 +409,7 @@ def do_everything(
 
 
 if __name__ == "__main__":
+    # generate_measureables_tui()
     v, g, h, x, α_rad, t, x_coord, x_start, z_coord, z_start, α_deg = symbols("v g h x α_{rad} t x_{coord} x_{start} z_{coord} z_{start} α_{deg}")
 
     do_everything(
